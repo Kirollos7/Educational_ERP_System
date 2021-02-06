@@ -1,17 +1,19 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "student",
+    'name': "Students",
 
     'summary': """
-        Short (1 phrase/line) summary of the module's purpose, used as
-        subtitle on modules listing or apps.openerp.com""",
+        This Application will handling all student requirments.
+        """,
 
     'description': """
-        Long description of module's purpose
+        This Application will handling all student requirments
+        Data.
+        Regestration
     """,
-
-    'author': "My Company",
-    'website': "http://www.yourcompany.com",
+    'application' : True,
+    'author': "Kirollos Noshy",
+    # 'website': "http://www.yourcompany.com",
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/14.0/odoo/addons/base/data/ir_module_category_data.xml
@@ -24,9 +26,11 @@
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
+        'data/student_sequence.xml',
+        'views/student_data.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

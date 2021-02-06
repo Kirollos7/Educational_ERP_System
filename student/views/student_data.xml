@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id='student_data_form_view' model='ir.ui.view'>
+        <field name="name">Student Data Form View</field>
+        <field name="model">student.data</field>
+        <field name="arch" type='xml'>
+            <form string='Student Data'>
+                <sheet>
+                    <h1 class="d-flex">
+                        <field name="username" placeholder="Student's User Name" required="True"/>
+                        <!-- <a title="Chat" icon="fa-comments" href="#" class="ml8 o_employee_chat_btn" invisible="not context.get('chat_icon')" attrs="{'invisible': [('user_id','=', False)]}" role="button"><i class="fa fa-comments"/></a> -->
+                    </h1>
+                    <div class='oe_title'>
+                        <h1>
+                            <field name="student_code" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group id='parent'>
+                        <group id='left'>
+                            <field name="full_name" />
+                            <!-- <field name="student_code"  /> -->
+                            <field name="date_of_birth" widget="date"/>
+                            <field name="gender" widget="selection"/>
+                            <field name="address" />
+                        </group>
+                        <group id='right'>
+                            <field name="image" widget="image" class="oe_avatar" options='{"zoom": true, "preview_image":"image_128"}'/>
+                            <field name="phone_number" widget="phone"/>
+                            <field name="postal_code" />
+                            <field name="email" widget="email"/>
+                            <field name="password" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="Intro about Student" string="Student Information">
+                            <field name="bio" widget="html"/> 
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="student_data_tree_view" model="ir.ui.view">
+        <field name="name">student_data_tree</field>
+        <field name="model">student.data</field>
+        <field name="arch" type="xml">
+            <tree string="Students">
+                <field name="username" />
+                <field name="student_code" />
+                <field name="date_of_birth" />
+                <field name="email" />
+            </tree>
+        </field>
+    </record>
+
+    <record id='student_data_action' model='ir.actions.act_window'>
+        <field name="name">Add Students</field>
+        <field name="res_model">student.data</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">Add a first Student.</p>
+        </field>
+    </record>
+
+
+   
+    
+    <menuitem id='student_root' name='Students' sequence='2'/>
+    <menuitem id='student_main_menu' name='Students Data' sequence='1' parent='student_root' />
+    <menuitem id='student_sub_menu' name='Add Student' sequence='1' parent='student_main_menu' action='student_data_action'/> 
+
+
+</odoo>
